@@ -9,14 +9,19 @@ function IssueTracker({ children, title }) {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (userInfo.isAdmin === true) {
-      setUserRoll("Administrator");
-    } else if (userInfo.isDev === true) {
-      setUserRoll("Developer");
+    console.log(userInfo)
+    if (!userInfo) {
+      return
     } else {
-      return;
+      if (userInfo.isAdmin === true) {
+        setUserRoll("Administrator");
+      } else if (userInfo.isDev === true) {
+        setUserRoll("Developer");
+      } else {
+        return;
+      }
     }
-  }, [userInfo.isAdmin, userInfo.isDev]);
+  }, [userInfo]);
 
   return (
     <Row>
