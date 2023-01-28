@@ -5,15 +5,18 @@ import { createIssueAction } from "../../redux/actions/issuesActions";
 import Loading from "../Loading";
 import ErrorMessage from "../ErrorMessage";
 import IssueTracker from "../IssueTracker/IssueTracker";
+import { useNavigate } from "react-router-dom";
 
 import "./AddIssue.css";
 
-function AddIssue({ history }) {
+function AddIssue() {
   const [description, setDescription] = useState("");
   const [forDev, setForDev] = useState("");
   const [priority, setPriority] = useState("");
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate()
 
   const issueCreate = useSelector((state) => state.issueCreate);
   const { loading, error } = issueCreate;
@@ -30,7 +33,7 @@ function AddIssue({ history }) {
     if (!description || !forDev || !priority) return;
 
     resetHandler();
-    history.push("/");
+    navigate("/");
   };
 
   return (

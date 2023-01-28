@@ -68,7 +68,7 @@ const Header = ({ setSearch }) => {
             <DropdownToggle className="navlink" nav caret>
               {userInfo?.userName}
             </DropdownToggle>
-            <DropdownMenu right>
+            <DropdownMenu end>
               <DropdownItem>
                 <Link className="dropdown-item" to="/profile">
                   My Profile

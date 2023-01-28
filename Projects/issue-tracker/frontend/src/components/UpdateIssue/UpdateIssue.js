@@ -20,8 +20,9 @@ import ErrorMessage from "../ErrorMessage";
 
 import "./UpdateIssue.css";
 import IssueTracker from "../IssueTracker/IssueTracker";
+import { useNavigate, useParams } from 'react-router-dom';
 
-function UpdateIssue({ match, history }) {
+function UpdateIssue({ match }) {
   const [description, setDescription] = useState("");
   const [forDev, setForDev] = useState("");
   const [priority, setPriority] = useState("");
@@ -29,6 +30,8 @@ function UpdateIssue({ match, history }) {
   const [date, setDate] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   const issueUpdate = useSelector((state) => state.issueUpdate);
   const { loading, error, success } = issueUpdate;
@@ -40,13 +43,12 @@ function UpdateIssue({ match, history }) {
     if (window.confirm("Are you sure?")) {
       dispatch(deleteIssueAction(id));
     }
-    history.push("/issues");
+    navigate("/issues");
   };
 
   useEffect(() => {
     const fetching = async () => {
-      const { data } = await axios.get(`/issues/${match.params.id}`);
-
+      const { data } = await axios.get(`/issues/${id}`);
       setDescription(data.description);
       setForDev(data.forDev);
       setPriority(data.priority);
@@ -54,7 +56,7 @@ function UpdateIssue({ match, history }) {
       setDate(data.updatedAt);
     };
     fetching();
-  }, [match.params.id]);
+  }, [id]);
 
   const resetHandler = () => {
     setDescription("");
@@ -66,7 +68,7 @@ function UpdateIssue({ match, history }) {
     event.preventDefault();
     dispatch(
       updateIssueAction(
-        match.params.id,
+        id,
         description,
         forDev,
         priority,
@@ -170,10 +172,18 @@ function UpdateIssue({ match, history }) {
                     Update Issue
                   </Button>
                   <Button
-                    type="submit"
+                    type="cancel"
+                    color="warning"
+                    className="complete-btn mt-3 mb-3"
+                    onClick={() => navigate("/")}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="cancel"
                     color="danger"
                     className="complete-btn mt-3 mb-3"
-                    onClick={() => deleteHandler(match.params.id)}
+                    onClick={() => deleteHandler(id)}
                   >
                     Delete Issue
                   </Button>

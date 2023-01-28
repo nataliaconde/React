@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import { Container, Row } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 import Logo from "../../media/images/logo.png";
 import "./LandingPage.css";
 
-function LandingPage({ history }) {
+function LandingPage() {
+  let navigate = useNavigate();
+
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");
-
     if (userInfo) {
-      history.push("/issues");
+      navigate("/issues");
     }
-  }, [history]);
+  }, [navigate]);
 
   return (
     <div className="main-container">

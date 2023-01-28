@@ -5,10 +5,10 @@ import { updateProfile } from "../../redux/actions/userActions";
 import ErrorMessage from "../ErrorMessage";
 import IssueTracker from "../IssueTracker/IssueTracker";
 import Loading from "../Loading";
-
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 
-const Profile = ({ history }) => {
+const Profile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
@@ -17,6 +17,7 @@ const Profile = ({ history }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -26,18 +27,17 @@ const Profile = ({ history }) => {
 
   useEffect(() => {
     if (!userInfo) {
-      history.push("/");
+      navigate("/");
     } else {
       setFirstName(userInfo.firstName);
       setLastName(userInfo.lastName);
       setUserName(userInfo.userName);
       setEmail(userInfo.email);
     }
-  }, [history, userInfo]);
+  }, [navigate, userInfo]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
-
     if (password === confirmPassword)
       dispatch(
         updateProfile({ firstName, lastName, userName, email, password })

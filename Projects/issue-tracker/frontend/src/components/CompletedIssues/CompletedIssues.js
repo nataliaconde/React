@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Card, CardSubtitle, CardText, Col, Row } from "reactstrap";
 import IssueTracker from "../IssueTracker/IssueTracker";
 import Loading from "../Loading";
@@ -7,8 +7,9 @@ import ErrorMessage from "../ErrorMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { listIssuesAction } from "../../redux/actions/issuesActions";
 
-const CompletedIssues = ({ history }) => {
+const CompletedIssues = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const currentIssues = useSelector((state) => state.currentIssues);
   const { loading, issues, error } = currentIssues;
@@ -19,9 +20,9 @@ const CompletedIssues = ({ history }) => {
   useEffect(() => {
     dispatch(listIssuesAction());
     if (!userInfo) {
-      history.push("/");
+      navigate("/");
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, navigate, userInfo]);
 
   return (
     <div className="issue-container">
@@ -32,7 +33,7 @@ const CompletedIssues = ({ history }) => {
           {issues &&
             issues
               ?.filter((filteredIssue) => filteredIssue.isCompleted === true)
-              .map((issue) => (
+              .reverse().map((issue) => (
                 <Card key={issue._id} className="mb-2">
                   <Row className="pt-1 px-2">
                     <Col>
@@ -59,7 +60,7 @@ const CompletedIssues = ({ history }) => {
                   </Row>
                   <Row className="pt-1 px-2">
                     <CardSubtitle className="text-left">
-                      Description
+                      Description:
                     </CardSubtitle>
                   </Row>
                   <Row className="pt-2">
@@ -69,8 +70,7 @@ const CompletedIssues = ({ history }) => {
                   </Row>
                   <Row className="pt-2">
                     <footer className="footer">
-                      Created on {issue.createdAt.substring(0, 10)} / Updated on{" "}
-                      {issue.updatedAt.substring(0, 10)}
+                      Created on: {issue.createdAt.substring(0, 10)} / Updated on: {issue.updatedAt.substring(0, 10)}
                     </footer>
                   </Row>
                 </Card>

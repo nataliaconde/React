@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Alert } from "reactstrap";
 
 const LoginErrorMessage = ({ color = "info", children }) => {
   const [visible, setVisible] = useState(true);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timeId = setTimeout(() => {
       setVisible(false);
-      history.go("/");
+      navigate("/");
       localStorage.clear();
     }, 5000);
     return () => {
       clearTimeout(timeId);
     };
-  }, [history]);
+  }, [navigate]);
 
   if (!visible) {
     return null;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container } from "reactstrap";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Footer from "./components/Footer/Footer";
@@ -17,27 +17,26 @@ import Profile from "./components/Profile/Profile";
 
 function App() {
   const [search, setSearch] = useState("");
-  console.log(search);
   return (
     <Container>
-      <Router>
+      <BrowserRouter>
         <Header setSearch={setSearch} />
-        <div>
-          <Route path="/" component={LandingPage} exact />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/profile" component={Profile} />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
           <Route
             path="/issues"
-            component={() => <CurrentIssue search={search} />}
+            element={<CurrentIssue search={search} />}
           />
-          <Route path="/addIssue" component={AddIssue} />
-          <Route path="/issue/:id" component={UpdateIssue} />
-          <Route path="/myIssues" component={MyIssues} />
-          <Route path="/completedIssues" component={CompletedIssues} />
-        </div>
+          <Route path="/addIssue" element={<AddIssue />} />
+          <Route path="/issue/:id" element={<UpdateIssue />} />
+          <Route path="/myIssues" element={<MyIssues />} />
+          <Route path="/completedIssues" element={<CompletedIssues />} />
+        </Routes>
         <Footer />
-      </Router>
+      </BrowserRouter>
     </Container>
   );
 }
