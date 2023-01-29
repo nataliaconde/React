@@ -86,9 +86,10 @@ function CurrentIssue({ search }) {
                     </CardText>
                   </Row>
                   <Row className="pt-2">
-                    <footer className="footer">
+                    <Col><footer className="footer fw-bold fst-italic" style={{ color: "#16a34a" }}>{issue.isCompleted === true ? <>Completed</> : null}</footer></Col>
+                    <Col><footer className="footer">
                       Created on: {issue.createdAt.substring(0, 10)} / Updated on: {issue.updatedAt.substring(0, 10)}
-                    </footer>
+                    </footer></Col>
                   </Row>
                 </Card>
               ))}
