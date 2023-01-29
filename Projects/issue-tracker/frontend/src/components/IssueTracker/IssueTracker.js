@@ -9,7 +9,6 @@ function IssueTracker({ children, title }) {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    console.log(userInfo)
     if (!userInfo) {
       return
     } else {

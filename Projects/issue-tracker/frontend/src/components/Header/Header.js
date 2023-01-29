@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Navbar,
   Nav,
+  Row,
   Button,
   ButtonGroup,
   UncontrolledDropdown,
@@ -28,6 +29,25 @@ const Header = ({ setSearch }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const currentIssues = useSelector((state) => state.currentIssues);
+  const { issues } = currentIssues;
+
+  const getCompleted = () => {
+    if (issues) {
+      let closed = 0
+      closed = issues.filter((filteredIssue) => filteredIssue.isCompleted === true).length
+      return closed
+    }
+  }
+
+  const getOpen = () => {
+    if (issues) {
+      let open = 0
+      open = issues.filter((filteredIssue) => filteredIssue.isCompleted === false).length
+      return open
+    }
+  }
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -126,6 +146,11 @@ const Header = ({ setSearch }) => {
             <Nav>{authButton()}</Nav>
           </Nav>
         </Collapse>
+        <Row>
+          {userInfo ? <span>Total Issues: {issues ? issues?.length : 0}</span> : null}
+        </Row>
+        <Row>{userInfo ? <span> Open Issues: {getOpen()}</span> : null}</Row>
+        <Row>{userInfo ? <span> Completed Issues: {getCompleted()}</span> : null}</Row>
       </Container>
     </Navbar>
   );
