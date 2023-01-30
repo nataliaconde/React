@@ -86,10 +86,18 @@ function CurrentIssue({ search }) {
                     </CardText>
                   </Row>
                   <Row className="pt-2">
-                    <Col><footer className="footer fw-bold fst-italic" style={{ color: "#16a34a" }}>{issue.isCompleted === true ? <>Completed</> : null}</footer></Col>
-                    <Col><footer className="footer">
-                      Created on: {issue.createdAt.substring(0, 10)} / Updated on: {issue.updatedAt.substring(0, 10)}
-                    </footer></Col>
+                    <Col>
+                      <footer className="footer fw-bold fst-italic">
+                        {issue.isCompleted === true ?
+                          <span style={{ color: "#16a34a" }}>Completed</span> :
+                          <span style={{ color: "#d97706" }}>Open</span>}
+                      </footer>
+                    </Col>
+                    <Col>
+                      <footer className="footer">
+                        Created on: {issue.createdAt.substring(0, 10)} / Updated on: {issue.updatedAt.substring(0, 10)}
+                      </footer>
+                    </Col>
                   </Row>
                 </Card>
               ))}
