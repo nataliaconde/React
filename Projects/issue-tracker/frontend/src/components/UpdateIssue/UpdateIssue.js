@@ -22,7 +22,7 @@ import "./UpdateIssue.css";
 import IssueTracker from "../IssueTracker/IssueTracker";
 import { useNavigate, useParams } from 'react-router-dom';
 
-function UpdateIssue({ match }) {
+function UpdateIssue() {
   const [description, setDescription] = useState("");
   const [forDev, setForDev] = useState("");
   const [priority, setPriority] = useState("");
@@ -112,13 +112,15 @@ function UpdateIssue({ match }) {
               <FormGroup>
                 <Label for="description">Description</Label>
                 <Input
+                  disabled
+                  type="textarea"
                   className="input"
                   name="description"
                   value={description}
                   id="description"
                   autoComplete="off"
                   placeholder="Description of Issue..."
-                  onChange={(e) => setDescription(e.target.value)}
+                // onChange={(e) => setDescription(e.target.value)}
                 />
               </FormGroup>
               <FormGroup>

@@ -10,7 +10,7 @@ const ErrorMessage = ({ color = "info", children }) => {
     const timeId = setTimeout(() => {
       setVisible(false);
       navigate("/issues");
-    }, 5000);
+    }, 3000);
     return () => {
       clearTimeout(timeId);
     };

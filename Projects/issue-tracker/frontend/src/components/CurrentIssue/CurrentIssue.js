@@ -65,7 +65,7 @@ function CurrentIssue({ search }) {
                           color="warning"
                           size="sm"
                         >
-                          Edit Issue
+                          Update Issue
                         </Button>
                       </Link>
                     </Col>
