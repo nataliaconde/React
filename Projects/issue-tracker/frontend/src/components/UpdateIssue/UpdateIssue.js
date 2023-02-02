@@ -21,7 +21,6 @@ import ErrorMessage from "../ErrorMessage";
 import "./UpdateIssue.css";
 import IssueTracker from "../IssueTracker/IssueTracker";
 import { useNavigate, useParams } from 'react-router-dom';
-import { ISSUE_UPDATE_REQUEST, ISSUE_UPDATE_SUCCESS, CURRENT_ISSUES_REQUEST } from './../../redux/constants/issuesConstants';
 
 function UpdateIssue() {
   const [description, setDescription] = useState("");
@@ -68,10 +67,6 @@ function UpdateIssue() {
   const updateHandler = (event) => {
     event.preventDefault();
     dispatch(
-      // {
-      //   type: CURRENT_ISSUES_REQUEST,
-      //   error: null
-      // },
       updateIssueAction(
         id,
         description,
