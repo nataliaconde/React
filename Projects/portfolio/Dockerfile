@@ -11,4 +11,5 @@ RUN npm i
 
 #Expose port and start application
 EXPOSE 3000
-CMD [ "npm", "run", "dev" ]
+# CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "start" ]
