@@ -32,6 +32,22 @@ function CurrentIssue({ search }) {
     }
   }, [dispatch, navigate, successCreate, userInfo, successUpdate]);
 
+  const editButton = () => {
+    if (userInfo && userInfo.isAdmin) {
+      return (
+        <Button
+          className="edit-button float-end mx-1"
+          color="danger"
+          size="sm"
+        >
+          Edit Issue
+        </Button>
+      )
+    } else {
+      return
+    }
+  }
+
   return (
     <div className="issue-container">
       <IssueTracker title="Current Issues">
@@ -58,16 +74,22 @@ function CurrentIssue({ search }) {
                         Assigned to: <span>{issue.forDev}</span>
                       </CardText>
                     </Col>
-                    <Col>
-                      <Link to={`/issue/${issue._id}`}>
+
+                    <Col className="">
+
+                      <Link to={`/editIssue/${issue._id}`}>
+                        {editButton()}
+                      </Link>
+                      <Link to={`/updateIssue/${issue._id}`}>
                         <Button
-                          className="edit-button float-end"
+                          className="edit-button float-end mx-1"
                           color="warning"
                           size="sm"
                         >
                           Update Issue
                         </Button>
                       </Link>
+
                     </Col>
                   </Row>
                   <Row className="pt-1 pb-2 px-2">
