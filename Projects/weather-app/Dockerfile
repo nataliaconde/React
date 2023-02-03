@@ -3,11 +3,12 @@ FROM node:alpine
 WORKDIR /usr/app
 # Install app dependencies
 COPY package.json ./
-COPY ./ ./
+# COPY ./ ./
 RUN npm i
 # Copy app source code
+COPY . ./
 
 
 #Expose port and start application
 EXPOSE 5000
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "start" ]
