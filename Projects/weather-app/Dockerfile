@@ -1,13 +1,14 @@
-FROM node:18
+# FROM node:alpine
+# WORKDIR /usr/app
+# COPY package.json ./
+# COPY ./ ./
+# RUN npm i
+# EXPOSE 3000
+# CMD [ "npm", "start" ]
 
-ENV NODE_ENV=production
-
+FROM node:18-alpine
 WORKDIR /app
-
-COPY ["package.json", "package-lock.json*", "./"]
-
-RUN npm install --production
-
 COPY . .
-
+RUN npm install --production
+# CMD ["node", "./src/index.js"]
 CMD [ "npm", "start" ]
