@@ -80,41 +80,46 @@ export const createIssueAction =
 
 export const updateIssueAction =
   (id, description, forDev, priority, isCompleted) =>
-  async (dispatch, getState) => {
-    try {
-      dispatch({
-        type: ISSUE_UPDATE_REQUEST,
-      });
+    async (dispatch, getState) => {
+      try {
+        dispatch({
+          type: ISSUE_UPDATE_REQUEST,
+        });
+        // dispatch(
+        //   {
+        //     type: CURRENT_ISSUES_REQUEST,
+        //     error: null
+        //   },
+        // )
+        const {
+          userLogin: { userInfo },
+        } = getState();
 
-      const {
-        userLogin: { userInfo },
-      } = getState();
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        };
 
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      };
+        const { data } = await axios.put(
+          `/issues/${id}`,
+          { description, forDev, priority, isCompleted },
+          config
+        );
 
-      const { data } = await axios.put(
-        `/issues/${id}`,
-        { description, forDev, priority, isCompleted },
-        config
-      );
-
-      dispatch({
-        type: ISSUE_UPDATE_SUCCESS,
-        payload: data,
-      });
-    } catch (error) {
-      const message =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
-      dispatch({ type: ISSUE_UPDATE_FAIL, payload: message });
-    }
-  };
+        dispatch({
+          type: ISSUE_UPDATE_SUCCESS,
+          payload: data,
+        });
+      } catch (error) {
+        const message =
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: ISSUE_UPDATE_FAIL, payload: message });
+      }
+    };
 
 export const deleteIssueAction = (id) => async (dispatch, getState) => {
   try {

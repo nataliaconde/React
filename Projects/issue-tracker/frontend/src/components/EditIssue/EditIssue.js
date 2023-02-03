@@ -18,11 +18,11 @@ import {
 import Loading from "../Loading";
 import ErrorMessage from "../ErrorMessage";
 
-import "./UpdateIssue.css";
+import "../UpdateIssue/UpdateIssue.css";
 import IssueTracker from "../IssueTracker/IssueTracker";
 import { useNavigate, useParams } from 'react-router-dom';
 
-function UpdateIssue() {
+function EditIssue() {
   const [description, setDescription] = useState("");
   const [forDev, setForDev] = useState("");
   const [priority, setPriority] = useState("");
@@ -64,32 +64,25 @@ function UpdateIssue() {
     setPriority("");
   };
 
-  const updateHandler = (event) => {
+  const editHandler = (event) => {
     event.preventDefault();
-    dispatch(
-      updateIssueAction(
-        id,
-        description,
-        forDev,
-        priority,
-        isCompleted
-      )
-    );
+    dispatch(updateIssueAction(id, description, forDev, priority, isCompleted));
     if (!description || !forDev || !priority) return;
+    // console.log(description)
     resetHandler();
   };
 
   return (
     <div className="issue-container">
-      <IssueTracker title="Update Issue"></IssueTracker>
+      <IssueTracker title="Edit Issue"></IssueTracker>
       <Card>
         <Row className="pt-1 px-2">
           <Col>
-            <Form onSubmit={updateHandler}>
+            <Form onSubmit={editHandler}>
               {loading && <Loading />}
               {success && (
                 <ErrorMessage color="success">
-                  Updated Successfully
+                  Edited Successfully
                 </ErrorMessage>
               )}
               {error && <ErrorMessage color="danger">{error}</ErrorMessage>}
@@ -112,7 +105,6 @@ function UpdateIssue() {
               <FormGroup>
                 <Label for="description">Description</Label>
                 <Input
-                  disabled
                   type="textarea"
                   className="input"
                   name="description"
@@ -120,6 +112,7 @@ function UpdateIssue() {
                   id="description"
                   autoComplete="off"
                   placeholder="Description of Issue..."
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </FormGroup>
               <FormGroup>
@@ -170,7 +163,7 @@ function UpdateIssue() {
                     color="info"
                     className="complete-btn mt-3 mb-3"
                   >
-                    Update Issue
+                    Apply Edits
                   </Button>
                   <Button
                     type="cancel"
@@ -195,7 +188,7 @@ function UpdateIssue() {
         </Row>
       </Card>
     </div>
-  );
+  )
 }
 
-export default UpdateIssue;
+export default EditIssue

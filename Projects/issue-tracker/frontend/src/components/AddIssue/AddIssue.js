@@ -44,6 +44,7 @@ function AddIssue() {
         <FormGroup>
           <Label for="description">Description</Label>
           <Input
+            type="textarea"
             className="input"
             name="description"
             value={description}
@@ -90,10 +91,18 @@ function AddIssue() {
           </Input>
         </FormGroup>
         <Row className="add-issue pt-4">
-          <Col className="text-center">
+          <Col className="btn-row">
             {loading && <Loading />}
-            <Button type="submit" color="info" className=" mt-3 mb-2">
+            <Button type="submit" color="info" className="complete-btn mt-3 mb-3">
               Add
+            </Button>
+            <Button
+              type="cancel"
+              color="warning"
+              className="complete-btn mt-3 mb-3"
+              onClick={() => navigate("/")}
+            >
+              Cancel
             </Button>
           </Col>
         </Row>

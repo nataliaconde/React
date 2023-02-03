@@ -6,11 +6,12 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import Footer from "./components/Footer/Footer";
 import CurrentIssue from "./components/CurrentIssue/CurrentIssue";
 import AddIssue from "./components/AddIssue/AddIssue";
-import UpdateIssue from "./components/UpdateIssue/UpdateIssue.js";
+import UpdateIssue from "./components/UpdateIssue/UpdateIssue";
+import EditIssue from "./components/EditIssue/EditIssue";
 import MyIssues from "./components/MyIssues/MyIssues";
 import CompletedIssues from "./components/CompletedIssues/CompletedIssues";
-import Login from "./components/Login/Login.js";
-import Register from "./components/Register/Register.js";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
 
 import "./App.css";
 import Profile from "./components/Profile/Profile";
@@ -31,7 +32,8 @@ function App() {
             element={<CurrentIssue search={search} />}
           />
           <Route path="/addIssue" element={<AddIssue />} />
-          <Route path="/issue/:id" element={<UpdateIssue />} />
+          <Route path="/updateIssue/:id" element={<UpdateIssue />} />
+          <Route path="/editIssue/:id" element={<EditIssue />} />
           <Route path="/myIssues" element={<MyIssues />} />
           <Route path="/completedIssues" element={<CompletedIssues />} />
         </Routes>

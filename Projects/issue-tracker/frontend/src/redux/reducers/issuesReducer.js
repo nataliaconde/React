@@ -30,7 +30,7 @@ export const currentIssuesReducer = (state = { issues: [] }, action) => {
 export const issueCreateReducer = (state = {}, action) => {
   switch (action.type) {
     case ISSUE_CREATE_REQUEST:
-      return { loading: true };
+      return { loading: true, success: false };
     case ISSUE_CREATE_SUCCESS:
       return { loading: false, success: true };
     case ISSUE_CREATE_FAIL:
@@ -44,7 +44,7 @@ export const issueCreateReducer = (state = {}, action) => {
 export const issueUpdateReducer = (state = {}, action) => {
   switch (action.type) {
     case ISSUE_UPDATE_REQUEST:
-      return { loading: true };
+      return { loading: true, success: false };
     case ISSUE_UPDATE_SUCCESS:
       return { loading: false, success: true };
     case ISSUE_UPDATE_FAIL:
