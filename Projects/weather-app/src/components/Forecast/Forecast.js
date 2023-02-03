@@ -7,7 +7,7 @@ const Forecast = () => {
   const [data, setData] = useState();
 
   const API_KEY = process.env.REACT_APP_API_KEY;
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = "http://api.openweathermap.org/data/2.5/onecall";
   const lat = 38.984764;
   const lon = -94.677658;
   const exclude = "current,minutely,hourly,alerts";
