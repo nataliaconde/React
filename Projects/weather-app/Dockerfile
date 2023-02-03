@@ -1,11 +1,13 @@
 FROM node:18
 
-WORKDIR /usr/app
+ENV NODE_ENV=production
 
-COPY package.json ./
+WORKDIR /app
 
-RUN npm install
+COPY ["package.json", "package-lock.json*", "./"]
 
-COPY ./ ./
+RUN npm install --production
+
+COPY . .
 
 CMD [ "npm", "start" ]
