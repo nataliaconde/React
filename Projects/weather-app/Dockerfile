@@ -1,14 +1,7 @@
-# FROM node:alpine
-# WORKDIR /usr/app
-# COPY package.json ./
-# COPY ./ ./
-# RUN npm i
-# EXPOSE 3000
-# CMD [ "npm", "start" ]
-
-FROM node:18-alpine
-WORKDIR /app
-COPY . .
-RUN npm install --production
-# CMD ["node", "./src/index.js"]
-CMD [ "npm", "start" ]
+FROM node:latest
+RUN mkdir /root/app
+WORKDIR /root/app
+COPY . /root/app
+RUN npm install -g serve
+EXPOSE 3000
+CMD serve -s build
