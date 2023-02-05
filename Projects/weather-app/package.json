@@ -13,6 +13,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
   },
+<<<<<<< HEAD
   "browserslist": {
     "production": [
       ">0.2%",
@@ -24,5 +25,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+=======
+  "scripts": {
+    "start": "react-scripts start",
+    "dev": "nodemon start",
+    "build": "react-scripts build"
+>>>>>>> 5626422ed56cb5a654870c6c2337d3a1dc9b15b8
   }
 }
