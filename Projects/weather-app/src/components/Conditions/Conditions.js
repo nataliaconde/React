@@ -18,7 +18,6 @@ const Conditions = (props) => {
     <>
       <div>{day}</div>
       <img
-        // src={`${process.env.REACT_APP_ICON_URL}${props.weatherType}.png`}
         src={`https://openweathermap.org/img/wn/${props.weatherType}.png`}
         alt={`${props.weatherDesc}`}
       />
