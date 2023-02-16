@@ -1,15 +1,14 @@
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar";
-import Index from "./pages/index";
-import Projects from "./pages/projects";
-import Practice from "./pages/practice";
-import Footer from "./components/footer";
-// import { useLayoutEffect } from "react";
-import hljs from "highlight.js";
-import "/node_modules/highlight.js/styles/base16/gruvbox-dark-hard.css";
+import { Routes, Route } from "react-router-dom"
+import Navbar from "./components/navbar"
+import Index from "./pages/index"
+import Projects from "./pages/projects"
+import Practice from "./pages/practice"
+import Footer from "./components/footer"
+import hljs from "highlight.js"
+import "/node_modules/highlight.js/styles/base16/gruvbox-dark-hard.css"
 
 function App() {
-  const currentDev = "Steve Fisher";
+  const currentDev = "Steve Fisher"
 
   return (
     <>
@@ -28,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

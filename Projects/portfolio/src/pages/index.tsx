@@ -1,17 +1,18 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect } from "react"
+import Weather from './../components/Weather/weather';
 
-type Props = { hljs: any };
+type Props = { hljs: any }
 
 export default function index({ hljs }: Props) {
   useLayoutEffect(() => {
-    hljs.highlightAll();
-  }, []);
+    hljs.highlightAll()
+  }, [])
 
   const children: string = `const awesome:string = "FlexxDev";
     var lang:string[] = new Array("Java", "JavaScript", "TypeScript", "Ruby", "Python")
-    var tech:string[] = new Array("React", "Vue", "Flask", "Rails")`;
+    var tech:string[] = new Array("React", "Vue", "Flask", "Rails")`
   return (
-    <div className="text-slate-300 text-center">
+    <div className="text-center">
       <div>
         <img
           className="max-w-[480px] h-auto bg-contain rounded-md mx-auto mb-10"
@@ -24,6 +25,7 @@ export default function index({ hljs }: Props) {
           {children}
         </code>
       </pre>
+      <div className="m-5"><Weather /></div>
     </div>
-  );
+  )
 }
