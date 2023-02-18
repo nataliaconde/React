@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react"
-import Conditions from "./Conditions/Conditions"
+import { useState, useEffect, lazy, Suspense } from "react"
+
+const Conditions = lazy(() => import("./Conditions/Conditions"))
 
 type Props = {}
 
@@ -70,11 +71,6 @@ export default function weather({ }: Props) {
 
   return (
     <>
-      <form className="my-3" onSubmit={handleSubmitForm}>
-        <input className="rounded mx-2 px-3 py-1" name="zipCode" type="text" value={zipCode} onChange={event => setZipCode(event.target.value)} placeholder="Enter Zip code" >
-        </input>
-        <button className="bg-teal-400 rounded mx-2 px-3 py-1 w-fit" >Check your Weather</button>
-      </form>
       <div className="flex flex-col text-center text-slate-300">
         <div className="text-2xl">Current Weather Forcast For</div>
         <div className="text-2xl">{location}</div>
@@ -82,36 +78,47 @@ export default function weather({ }: Props) {
           Latitude: {lat} Logitude: {lon}
         </div>
       </div>
-      <div className="grid grid-cols-2 justify-items-center md:flex md:justify-center md:flex-row gap-5 my-5 text-center">
+
+      <div className="flex flex-wrap justify-center items-center mt-5 gap-4 w-full">
         {!!data &&
           data.slice(0, 5).map((i: any, index: any) => {
             if (index === 0) {
               return (
                 <div className="bg-violet-200 dark:bg-violet-400 rounded p-2 w-[100px] shadow-md dark:shadow-inner" key={index}>
-                  <Conditions
-                    weekDay={i.weekDay}
-                    min={i.min}
-                    max={i.max}
-                    weatherType={i.weatherType}
-                    weatherDesc={i.weatherDesc}
-                  />
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Conditions
+                      weekDay={i.weekDay}
+                      min={i.min}
+                      max={i.max}
+                      weatherType={i.weatherType}
+                      weatherDesc={i.weatherDesc}
+                    />
+                  </Suspense>
                 </div>
               )
             } else {
               return (
                 <div className="bg-violet-300 dark:bg-violet-500 rounded p-2 w-[100px] shadow-md dark:shadow-inner" key={index}>
-                  <Conditions
-                    weekDay={i.weekDay}
-                    min={i.min}
-                    max={i.max}
-                    weatherType={i.weatherType}
-                    weatherDesc={i.weatherDesc}
-                  />
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Conditions
+                      weekDay={i.weekDay}
+                      min={i.min}
+                      max={i.max}
+                      weatherType={i.weatherType}
+                      weatherDesc={i.weatherDesc}
+                    />
+                  </Suspense>
                 </div>
               )
             }
           })}
       </div>
+
+      <form className="my-3" onSubmit={handleSubmitForm}>
+        <input className="rounded mx-2 px-3 py-1" name="zipCode" type="text" value={zipCode} onChange={event => setZipCode(event.target.value)} placeholder="Enter Zip code" >
+        </input>
+        <button className="bg-teal-400 rounded mx-2 px-3 py-1 w-fit" >Check your Weather</button>
+      </form>
     </>
   )
 }

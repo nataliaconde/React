@@ -1,15 +1,14 @@
-FROM node:alpine
+FROM node:latest
 # Create app directory
 WORKDIR /usr/app
 
 # Copy app source code
-COPY package.json ./
-COPY ./ ./
+COPY ./ /usr/app
 
 # Install app dependencies
-RUN npm i
+RUN npm i -g serve
 
 #Expose port and start application
 EXPOSE 3000
 # CMD [ "npm", "run", "dev" ]
-CMD [ "npm", "start" ]
+CMD serve -s dist

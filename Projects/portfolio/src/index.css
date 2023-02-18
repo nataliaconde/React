@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.theme {
+  @apply text-slate-900;
+}
+
+.dark .theme {
+  @apply text-orange-100;
+}
+
+.isActive {
+  @apply text-red-600;
+}
+
+.dark .isActive {
+  @apply text-amber-500;
+}

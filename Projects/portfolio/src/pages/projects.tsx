@@ -8,7 +8,7 @@ export default function projects({ }: Props) {
         <div className="font-semibold text-2xl">Project 1
           <img
             className="rounded-md mx-auto"
-            src="/src/assets/images/logo.png"
+            src="/logo.png"
             alt="Flexxall"
           />
         </div>
@@ -18,7 +18,7 @@ export default function projects({ }: Props) {
         <div className="font-semibold text-2xl">Project 2
           <img
             className="w-45 rounded-md mx-auto"
-            src="/src/assets/images/logo.png"
+            src="/logo.png"
             alt="Flexxall"
           />
         </div>
@@ -28,7 +28,7 @@ export default function projects({ }: Props) {
         <div className="font-semibold text-2xl">Project 3
           <img
             className="w-45 rounded-md mx-auto"
-            src="/src/assets/images/logo.png"
+            src="/logo.png"
             alt="Flexxall"
           />
         </div>
@@ -38,7 +38,7 @@ export default function projects({ }: Props) {
         <div className="font-semibold text-2xl">Project 4
           <img
             className="w-45 rounded-md mx-auto"
-            src="/src/assets/images/logo.png"
+            src="/logo.png"
             alt="Flexxall"
           />
         </div>
@@ -48,7 +48,7 @@ export default function projects({ }: Props) {
         <div className="font-semibold text-2xl">Project 5
           <img
             className="w-45 rounded-md mx-auto"
-            src="/src/assets/images/logo.png"
+            src="/logo.png"
             alt="Flexxall"
           />
         </div>

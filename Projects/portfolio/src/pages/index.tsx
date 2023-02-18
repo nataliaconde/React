@@ -1,5 +1,6 @@
-import { useLayoutEffect } from "react"
-import Weather from './../components/Weather/weather';
+import { Suspense, lazy, useLayoutEffect } from "react"
+
+const Weather = lazy(() => import("./../components/Weather/weather"))
 
 type Props = { hljs: any }
 
@@ -11,6 +12,7 @@ export default function index({ hljs }: Props) {
   const children: string = `const awesome:string = "FlexxDev";
     var lang:string[] = new Array("Java", "JavaScript", "TypeScript", "Ruby", "Python")
     var tech:string[] = new Array("React", "Vue", "Flask", "Rails")`
+
   return (
     <div className="text-center">
       <div>
@@ -25,7 +27,9 @@ export default function index({ hljs }: Props) {
           {children}
         </code>
       </pre>
-      <div className="m-5"><Weather /></div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="m-5"><Weather /></div>
+      </Suspense>
     </div>
   )
 }
