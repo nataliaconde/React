@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        swirl: "url('/src/assets/images/VectorBlack.jpg')",
-        swirlLight: "url('/src/assets/images/VectorLight.jpg')",
+        swirl: "url('/VectorBlack.jpg')",
+        swirlLight: "url('/VectorLight.jpg')",
       },
       boxShadow: {
         fd: "0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",

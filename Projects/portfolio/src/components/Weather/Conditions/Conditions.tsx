@@ -1,5 +1,3 @@
-import React from "react"
-
 const Conditions = (props: any) => {
   const weekday = [
     "Sunday",

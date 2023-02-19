@@ -18,7 +18,7 @@ export default function index({ hljs }: Props) {
       <div>
         <img
           className="max-w-[480px] h-auto bg-contain rounded-md mx-auto mb-10"
-          src="/src/assets/images/Flexxall.jpg"
+          src="/Flexxall.jpg"
           alt="Flexxall"
         />
       </div>
