@@ -11,7 +11,7 @@ export default function practice({ hljs }: Props) {
   return (
     <div className="text-slate-300 text-center">
       <pre>
-        <code className="rounded-md min-w-[480px] max-w-fit mx-auto text-start language-typescript">Practice
+        <code className="rounded-md min-w-[480px] max-w-fit mx-auto text-start javascript">Practice
         </code>
       </pre>
     </div>

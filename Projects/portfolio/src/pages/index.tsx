@@ -23,7 +23,7 @@ export default function index({ hljs }: Props) {
         />
       </div>
       <pre>
-        <code className="rounded-md min-w-[480px] max-w-fit mx-auto text-start language-typescript">
+        <code className="rounded-md min-w-[480px] max-w-fit mx-auto text-start typscript">
           {children}
         </code>
       </pre>
