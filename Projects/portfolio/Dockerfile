@@ -1,14 +1,13 @@
 FROM node:latest
-# Create app directory
+
+RUN mkdir /usr/app
+
 WORKDIR /usr/app
 
-# Copy app source code
 COPY ./ /usr/app
 
-# Install app dependencies
-RUN npm i -g serve
+RUN npm install -g serve
 
-#Expose port and start application
 EXPOSE 3000
-# CMD [ "npm", "run", "dev" ]
+
 CMD serve -s dist
