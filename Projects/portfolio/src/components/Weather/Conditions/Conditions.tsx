@@ -1,4 +1,12 @@
-const Conditions = (props: any) => {
+type Props = {
+  weekDay: number
+  min: number
+  max: number
+  weatherType: String
+  weatherDesc: String
+}
+
+export default function Conditions(conditionsData: Props) {
   const weekday = [
     "Sunday",
     "Monday",
@@ -9,7 +17,7 @@ const Conditions = (props: any) => {
     "Saturday",
   ]
 
-  const d = new Date(props.weekDay * 1000).getDay()
+  const d = new Date(conditionsData.weekDay * 1000).getDay()
   let day = weekday[d]
 
   return (
@@ -17,15 +25,14 @@ const Conditions = (props: any) => {
       <div>{day}</div>
       <img
         className="mx-auto"
-        src={`https://openweathermap.org/img/wn/${props.weatherType}.png`}
-        alt={`${props.weatherDesc}`}
+        src={`https://openweathermap.org/img/wn/${conditionsData.weatherType}.png`}
+        alt={`${conditionsData.weatherDesc}`}
       />
       <div>
-        {Math.round(props.min)}
-        {"\u00b0"} {Math.round(props.max)}
+        {Math.round(conditionsData.min)}
+        {"\u00b0"} {Math.round(conditionsData.max)}
         {"\u00b0"}
       </div>
     </>
   )
 }
-export default Conditions

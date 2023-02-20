@@ -1,19 +1,21 @@
 import { useState, useEffect, lazy, Suspense } from "react"
+import { useAtom } from "jotai"
+import { weatherDataAtom } from "../../Atoms"
 
 const Conditions = lazy(() => import("./Conditions/Conditions"))
 
 type Props = {}
 
-export default function weather({ }: Props) {
-  const [data, setData] = useState<Array<string>>()
+export default function Weather({ }: Props) {
+  const [weatherData, setWeatherData] = useAtom(weatherDataAtom)
   const [location, setLocation] = useState<string>("Overland Park")
   const [zipCode, setZipCode] = useState<any>("")
   const [lat, setLat] = useState<number>(38.9928)
   const [lon, setLon] = useState<number>(-94.6771)
 
   const API_KEY = import.meta.env.VITE_API_KEY
-  const WEATHER_API_URL = "http://api.openweathermap.org/data/2.5/onecall"
-  const GEOLOCATION_API_URL = "http://api.openweathermap.org/geo/1.0/zip"
+  const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/onecall"
+  const GEOLOCATION_API_URL = "https://api.openweathermap.org/geo/1.0/zip"
   const exclude = "current,minutely,hourly,alerts"
   const units = "imperial"
   const weatherUrl = `${WEATHER_API_URL}?lat=${lat}&lon=${lon}&exclude=${exclude}&units=${units}&appid=${API_KEY}`
@@ -22,7 +24,7 @@ export default function weather({ }: Props) {
     fetch(weatherUrl)
       .then((res) => res.json())
       .then((res) => {
-        setData(
+        setWeatherData(
           res.daily.map((day: any) => {
             return {
               weekDay: day.dt,
@@ -80,8 +82,8 @@ export default function weather({ }: Props) {
       </div>
 
       <div className="flex flex-wrap justify-center items-center mt-5 gap-4 w-full">
-        {!!data &&
-          data.slice(0, 5).map((i: any, index: any) => {
+        {!!weatherData &&
+          weatherData.slice(0, 5).map((i: any, index: any) => {
             if (index === 0) {
               return (
                 <div className="bg-violet-200 dark:bg-violet-400 rounded p-2 w-[100px] shadow-md dark:shadow-inner" key={index}>

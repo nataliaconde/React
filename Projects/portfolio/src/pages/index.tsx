@@ -1,15 +1,16 @@
 import { Suspense, lazy, useLayoutEffect } from "react"
 
-const Weather = lazy(() => import("./../components/Weather/weather"))
+const Weather = lazy(() => import("./../components/Weather/Weather"))
 
 type Props = { hljs: any }
 
 export default function index({ hljs }: Props) {
+
   useLayoutEffect(() => {
     hljs.highlightAll()
   }, [])
 
-  const children: string = `const awesome:string = "FlexxDev";
+  const intro: string = `const awesome:string = "FlexxDev";
     var lang:string[] = new Array("Java", "JavaScript", "TypeScript", "Ruby", "Python")
     var tech:string[] = new Array("React", "Vue", "Flask", "Rails")`
 
@@ -24,7 +25,7 @@ export default function index({ hljs }: Props) {
       </div>
       <pre>
         <code className="rounded-md min-w-[480px] max-w-fit mx-auto text-start typscript">
-          {children}
+          {intro}
         </code>
       </pre>
       <Suspense fallback={<div>Loading...</div>}>

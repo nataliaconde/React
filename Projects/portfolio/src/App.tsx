@@ -13,9 +13,9 @@ hljs.registerLanguage('typscript', typscript)
 
 const Projects = lazy(() => import("./pages/projects"))
 const Practice = lazy(() => import("./pages/practice"))
+const Contact = lazy(() => import("./pages/contact"))
 
 function App() {
-  const currentDev = "Steve Fisher"
 
   return (
     <>
@@ -27,10 +27,11 @@ function App() {
               <Route path="/" element={<Index hljs={hljs} />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/practice" element={<Practice hljs={hljs} />} />
+              <Route path="/contact" element={<Contact hljs={hljs} />} />
             </Routes>
           </Suspense>
         </div>
-        <Footer name={currentDev} />
+        <Footer />
       </div>
     </>
   );
