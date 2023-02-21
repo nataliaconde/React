@@ -5,11 +5,13 @@ import Footer from "./components/footer"
 import hljs from "highlight.js/lib/core"
 import javascript from "highlight.js/lib/languages/javascript"
 import typscript from "highlight.js/lib/languages/TypeScript"
+import plaintext from "highlight.js/lib/languages/Plaintext"
 import "/node_modules/highlight.js/styles/base16/gruvbox-dark-hard.css"
 import { Suspense, lazy } from "react"
 
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('typscript', typscript)
+hljs.registerLanguage('plaintext', plaintext)
 
 const Projects = lazy(() => import("./pages/projects"))
 const Practice = lazy(() => import("./pages/practice"))

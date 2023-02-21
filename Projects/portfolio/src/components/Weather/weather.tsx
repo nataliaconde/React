@@ -86,7 +86,7 @@ export default function Weather({ }: Props) {
           weatherData.slice(0, 5).map((i: any, index: any) => {
             if (index === 0) {
               return (
-                <div className="bg-violet-200 dark:bg-violet-400 rounded p-2 w-[100px] shadow-md dark:shadow-inner" key={index}>
+                <div className="bg-violet-500 dark:bg-violet-400 rounded p-2 w-[100px] shadow-fd" key={index}>
                   <Suspense fallback={<div>Loading...</div>}>
                     <Conditions
                       weekDay={i.weekDay}
@@ -100,7 +100,7 @@ export default function Weather({ }: Props) {
               )
             } else {
               return (
-                <div className="bg-violet-300 dark:bg-violet-500 rounded p-2 w-[100px] shadow-md dark:shadow-inner" key={index}>
+                <div className="bg-violet-400 dark:bg-violet-500 rounded p-2 w-[100px] shadow-fd" key={index}>
                   <Suspense fallback={<div>Loading...</div>}>
                     <Conditions
                       weekDay={i.weekDay}
@@ -116,10 +116,10 @@ export default function Weather({ }: Props) {
           })}
       </div>
 
-      <form className="my-3" onSubmit={handleSubmitForm}>
-        <input className="rounded mx-2 px-3 py-1" name="zipCode" type="text" value={zipCode} onChange={event => setZipCode(event.target.value)} placeholder="Enter Zip code" >
+      <form className="my-5" onSubmit={handleSubmitForm}>
+        <input className="rounded mx-2 px-3 py-1" name="zipCode" type="text" aria-label="zipCode" value={zipCode} onChange={event => setZipCode(event.target.value)} placeholder="Enter Zip code" >
         </input>
-        <button className="bg-teal-400 rounded mx-2 px-3 py-1 w-fit" >Check your Weather</button>
+        <button className="bg-teal-400 rounded mx-2 px-3 py-1 w-fit" type="button">Check your Weather</button>
       </form>
     </>
   )

@@ -1,1 +1,0 @@
-import{r,j as t}from"./index-7d2cc807.js";function s({hljs:e}){return r.useLayoutEffect(()=>{e.highlightAll()},[]),t.jsx("div",{className:"text-slate-300 text-center",children:t.jsx("pre",{children:t.jsx("code",{className:"rounded-md min-w-[480px] max-w-fit mx-auto text-start javascript",children:"Practice"})})})}export{s as default};

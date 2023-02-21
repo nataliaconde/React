@@ -7,7 +7,7 @@ type Props = {}
 export default function navbar({ }: Props) {
   return (
     <>
-      <div className="flex justify-between px-5 py-2 bg-red-200 dark:bg-slate-900 mb-5 sticky top-0">
+      <div className="flex justify-between items-center px-5 py-2 bg-red-200 dark:bg-slate-900 mb-5 sticky top-0">
         <div className="flex flex-col sm:flex-row gap-4 my-2 font-semibold">
           <Link to="/" className="bg-teal-400 shadow-fd dark:shadow-fdDark rounded px-3 py-1 w-fit">
             Home
@@ -23,7 +23,9 @@ export default function navbar({ }: Props) {
           </Link>
         </div>
         <div className="theme font-normal font-school1"><DarkMode /></div>
-        <a href="mailto:flexxall@live.com" className="theme text-4xl text-slate-300 text-end my-auto">FlexxDev</a>
+        <div>
+          <a href="mailto:flexxall@live.com" className="theme text-4xl text-slate-300 text-end my-auto">FlexxDev</a>
+        </div>
       </div>
 
       <div className="flex justify-end pr-5">

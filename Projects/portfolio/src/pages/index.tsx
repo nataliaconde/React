@@ -10,21 +10,21 @@ export default function index({ hljs }: Props) {
     hljs.highlightAll()
   }, [])
 
-  const intro: string = `const awesome:string = "FlexxDev";
-    var lang:string[] = new Array("Java", "JavaScript", "TypeScript", "Ruby", "Python")
-    var tech:string[] = new Array("React", "Vue", "Flask", "Rails")`
+  const intro: string = `const awesome: string = "FlexxDev";
+    var lang: string[] = new Array("Java", "JavaScript", "TypeScript", "Ruby", "Python");
+    var tech: string[] = new Array("React", "Vue", "Flask", "Rails");`
 
   return (
     <div className="text-center">
       <div>
         <img
-          className="max-w-[480px] h-auto bg-contain rounded-md mx-auto mb-10"
-          src="/Flexxall.jpg"
+          className="min-w-[300px] w-[480px] h-auto bg-contain shadow-fd dark:shadow-fdDark rounded-md mx-auto mb-10"
+          src="/Flexxall.webp"
           alt="Flexxall"
         />
       </div>
-      <pre>
-        <code className="rounded-md min-w-[480px] max-w-fit mx-auto text-start typscript">
+      <pre title="codingIntro">
+        <code className="rounded-md shadow-fd dark:shadow-fdDark min-w-[480px] max-w-fit mx-auto text-start typscript">
           {intro}
         </code>
       </pre>

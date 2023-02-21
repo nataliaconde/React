@@ -22,7 +22,7 @@ export default function Contact({ hljs }: Props) {
   return (
     <div className="text-slate-300 text-center">
       <pre>
-        <code className="rounded-md min-w-[480px] max-w-fit mx-auto text-start javascript">
+        <code className="rounded-md shadow-fd dark:shadow-fdDark min-w-[480px] max-w-fit mx-auto text-start javascript">
           {contactInfo}
         </code>
       </pre>

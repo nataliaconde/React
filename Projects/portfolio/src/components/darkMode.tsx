@@ -15,9 +15,9 @@ const DarkMode = () => {
   }, [darkMode])
 
   return (
-    <label className="text-sm lg:text-xl">
-      {/* <span className="">Theme</span> */}
-      <input type="checkbox" className="appearance-none peer" onClick={(e) => setDarkMode(!darkMode)} />
+    <label className="flex flex-row items-center text-sm lg:text-xl mx-5">
+      <span className="mr-2 lg:mr-4">Theme</span>
+      <input title="themeSelect" type="checkbox" className="appearance-none peer" onClick={(e) => setDarkMode(!darkMode)} />
       {(darkMode)
         ?
         <span className="w-9 h-5 lg:w-12 lg:h-6 flex items-center p-1 rounded-full duration-300 ease-in-out bg-sky-900 after:w-3 after:h-3 lg:after:w-4 lg:after:h-4 after:bg-stone-500 after:rounded-full after:shadow-toggleDark after:duration-300 after:translate-x-4 lg:after:translate-x-6"></span>
