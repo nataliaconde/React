@@ -15,7 +15,7 @@ export default function practice({ hljs }: Props) {
   |___/\__|\__,_|_|      \_/\_/  \__,_|_|   |___/
  `
 
-  const code = ` return (
+  const code = `return (
     <div className="text-slate-300 text-center">
       <pre>
         <code className="rounded-md min-w-[480px] max-w-fit mx-auto my-5 text-start plaintext">
@@ -31,6 +31,7 @@ export default function practice({ hljs }: Props) {
 
   return (
     <div className="text-slate-300 text-center">
+
       <pre>
         <code className="shadow-fd dark:shadow-fdDark rounded-md min-w-[480px] max-w-fit mx-auto my-5 text-start plaintext">
           {title}

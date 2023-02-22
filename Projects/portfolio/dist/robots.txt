@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /practice/
+
+Sitemap: https://portfolio2-flexxall.b4a.run/sitemap.xml
